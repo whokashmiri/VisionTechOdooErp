@@ -3,10 +3,6 @@ name: business-management-erp
 services:
   db:
     image: postgres:16
-    command:
-      - odoo
-      - --dev=reload,xml
-
     restart: unless-stopped
 
     environment:
@@ -28,7 +24,6 @@ services:
 
   odoo:
     image: odoo:19.0
-
     restart: unless-stopped
 
     depends_on:
