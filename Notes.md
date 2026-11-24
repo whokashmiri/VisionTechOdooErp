@@ -10,3 +10,7 @@ Authorization	        Custom middleware	        ACLs and record rules
 Frontend	            React	                    XML and OWL
 Business features	    Built manually	            Existing or custom modules
 Scheduled tasks	        Cron packages	            ir.cron
+
+
+odoo.conf ? - file is the primary configuration file used to control the behavior of the
+odoo server (like env , application.properties)

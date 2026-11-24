@@ -3,6 +3,9 @@ name: business-management-erp
 services:
   db:
     image: postgres:16
+    command:
+      - odoo
+      - --dev=reload,xml
 
     restart: unless-stopped
 
@@ -43,6 +46,19 @@ services:
 
     volumes:
       - odoo-data:/var/lib/odoo
+
+      - type: bind
+        source: ./config/odoo.conf
+        target: /etc/odoo/odoo.conf
+        read_only: true
+        bind:
+          create_host_path: false
+
+      - type: bind
+        source: ./custom_addons
+        target: /mnt/extra-addons
+        bind:
+          create_host_path: false
 
 volumes:
   postgres-data:
