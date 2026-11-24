@@ -1,0 +1,47 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local Odoo configuration
+config/odoo.conf
+secrets/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Python testing tools
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE configuration
+.vscode/
+.idea/
+
+# Application logs
+*.log
+logs/
+
+# Local application data
+odoo-data/
+postgres-data/
+
+# Database backups
+backups/
+*.dump
+*.sql.gz
+*.backup
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+.env
+.env.example
