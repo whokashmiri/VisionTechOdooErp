@@ -1,0 +1,25 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Root Application Menu -->
+    <menuitem id="menu_vt_employee_root"
+              name="Employee Management"
+              sequence="10"
+              groups="base.group_system"/>
+
+    <!-- Employees Menu -->
+    <menuitem id="menu_vt_employees"
+              name="Employees"
+              parent="menu_vt_employee_root"
+              action="action_vt_employee"
+              sequence="10"/>
+
+    <!-- Departments Menu -->
+    <menuitem id="menu_vt_departments"
+              name="Departments"
+              parent="menu_vt_employee_root"
+              action="action_vt_department"
+              sequence="20"/>
+
+</odoo>

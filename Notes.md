@@ -17,3 +17,14 @@ odoo server (like env , application.properties)
 api - Decorator (decorator modifies or registers the behavior of a Python function.) that control model method behavior
 fields - field definitions
 models - model class and framework functionality
+
+recordset - instance of a model class
+write() - updates records in a record set
+unlink() - Deletes records
+
+Build UI? using XML (Extensible Markup Language) and odoo renders them using its web client
+
+\*\* operator unpacks the existing Python dictionary.
+
+Object buttton - Executes Py Method , implement business logic, construct dynamic domains, return diff actions, Good for workflows
+Action button - Executes Existing action, usually opens predefined functionality , references a particular action, good for navigation
