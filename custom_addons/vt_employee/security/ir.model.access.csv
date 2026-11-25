@@ -1,4 +1,3 @@
-
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_vt_department_admin,vt.department.admin,model_vt_department,base.group_system,1,1,1,1
 access_vt_employee_admin,vt.employee.admin,model_vt_employee,base.group_system,1,1,1,1

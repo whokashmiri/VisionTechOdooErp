@@ -52,11 +52,12 @@ class Department(models.Model):
     )
 
     @api.depends("employee_ids", "employee_ids.active")
-    @api.depends_context("active_test")
     def _compute_employee_count(self):
         for department in self:
             department.employee_count = len(
-                department.employee_ids
+                department.employee_ids.with_context(
+                    active_test=True
+                ).filtered("active")
             )
 
     def action_view_employees(self):
@@ -72,10 +73,10 @@ class Department(models.Model):
                 (False, "form"),
             ],
             "domain":[
-                ("department_id", "-", self.id),
+                ("department_id", "=", self.id),
 
             ],
-            "context" {
+            "context": {
                 **self.env.context,
                 "default_department_id": self.id,
             },

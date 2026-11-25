@@ -28,3 +28,5 @@ Build UI? using XML (Extensible Markup Language) and odoo renders them using its
 
 Object buttton - Executes Py Method , implement business logic, construct dynamic domains, return diff actions, Good for workflows
 Action button - Executes Existing action, usually opens predefined functionality , references a particular action, good for navigation
+
+sequence - shows UI (menuitem) in order

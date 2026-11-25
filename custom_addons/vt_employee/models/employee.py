@@ -72,6 +72,24 @@ class Employee(models.Model):
         default=True,
     )
 
+    user_id = fields.Many2one(
+        comodel_name="res.users",
+        string="Related User",
+        ondelete="set null",
+        copy=False,
+        index=True,
+        groups=(
+            "vt_employee.group_vt_hr_manager,"
+            "base.group_system"
+        ),
+        help="Odoo user account associated with this employee.",
+    )
+
+    _unique_user = models.Constraint(
+        "UNIQUE(user_id)",
+        "An Odoo user can only be linked to one employee.",
+    )
+
     _unique_employee_code = models.Constraint(
         "UNIQUE(employee_code)",
         "The employee code must be unique.",

@@ -1,0 +1,57 @@
+
+<odoo>
+
+    <!-- Application Security Category -->
+    <record id="module_category_vt_employee" model="ir.module.category">
+
+        <field name="name">VisionTech HR</field>
+
+        <field name="description">Employee management access permissions</field>
+
+        <field name="sequence">30</field>
+
+    </record>
+
+    <!-- Odoo 19 Privilege -->
+    <record id="privilege_vt_employee" model="res.groups.privilege">
+
+        <field name="name">Employee Management</field>
+
+        <field name="category_id" ref="module_category_vt_employee"/>
+
+    </record>
+
+    <!-- Regular Employee -->
+    <record id="group_vt_employee" model="res.groups">
+
+        <field name="name">Employee</field>
+
+        <field name="privilege_id" ref="privilege_vt_employee"/>
+
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+
+    </record>
+
+    <!-- HR User -->
+    <record id="group_vt_hr_user" model="res.groups">
+
+        <field name="name">HR User</field>
+
+        <field name="privilege_id" ref="privilege_vt_employee"/>
+
+        <field name="implied_ids" eval="[(4, ref('group_vt_employee'))]"/>
+
+    </record>
+
+    <!-- HR Manager -->
+    <record id="group_vt_hr_manager" model="res.groups">
+
+        <field name="name">HR Manager</field>
+
+        <field name="privilege_id" ref="privilege_vt_employee"/>
+
+        <field name="implied_ids" eval="[(4, ref('group_vt_hr_user'))]"/>
+
+    </record>
+
+</odoo>

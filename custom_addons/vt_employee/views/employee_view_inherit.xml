@@ -1,0 +1,52 @@
+
+
+<odoo>
+
+    <record id="view_vt_employee_form_inherit"
+            model="ir.ui.view">
+
+        <field name="name">vt.employee.form.inherit</field>
+
+        <field name="model">vt.employee</field>
+
+        <field name="inherit_id" ref="view_vt_employee_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='email']" position="attributes">
+
+                <attribute name="placeholder">employee@visiontech.example</attribute>
+
+            </xpath>
+
+            <xpath expr="//field[@name='phone']" position="attributes">
+
+                <attribute name="placeholder">+966 5X XXX XXXX</attribute>
+
+            </xpath>
+
+            <xpath expr="//group[@name='employment_information']" position="attributes">
+
+                <attribute name="string">Organization and Employment</attribute>
+
+            </xpath>
+
+        <xpath expr="//notebook" position="inside">
+
+            <page string="System Access" name="system_access" groups="vt_employee.group_vt_hr_manager,base.group_system">
+
+                <group>
+
+                    <field name="user_id" domain="[('share', '=', False)]" options="{'no_create': True,'no_open': True}"/>
+
+                </group>
+
+            </page>
+
+        </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

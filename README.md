@@ -10,6 +10,18 @@
 **Frontend:** XML, JavaScript, OWL  
 **Deployment:** Docker, Linux, Nginx
 
+# =========================
+
+docker compose restart odoo
+
+docker compose stop odoo
+
+docker compose run --rm --no-deps odoo odoo -d configllc -u vt_employee --stop-after-init --no-http
+
+docker compose up -d
+
+# =========================
+
 ---
 
 # 1. Project Overview
