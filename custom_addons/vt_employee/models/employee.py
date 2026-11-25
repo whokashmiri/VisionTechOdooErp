@@ -93,6 +93,24 @@ class Employee(models.Model):
         help="Odoo user account associated with this employee.",
     )
 
+    currency_id = fields.Many2one(
+        comodel_name="res.currency",
+        string="Currency",
+        required=True,
+        default=lambda self: self.env.company.currency_id,
+    )
+
+    salary = fields.Monetary(
+        string="Monthly Salary",
+        currency_field="currency_id",
+        default=0.0,
+        groups=(
+            "vt_employee.group_vt_hr_manager,"
+            "base.group_system"
+        ),
+        help="Monthly employee salary.",
+    )
+
     _unique_user = models.Constraint(
         "UNIQUE(user_id)",
         "An Odoo user can only be linked to one employee.",
@@ -130,3 +148,11 @@ class Employee(models.Model):
 
                 visited_ids.add(current_manager.id)
                 current_manager = current_manager.manager_id
+        
+    @api.constrains("salary")
+    def _check_salary(self):
+        for employee in self:
+            if employee.salary < 0:
+                raise ValidationError(
+                    "Salary cannot be negative."
+                )

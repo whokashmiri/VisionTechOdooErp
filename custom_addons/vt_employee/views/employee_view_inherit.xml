@@ -21,6 +21,25 @@
                 </group>
             </page>
         </xpath>
+
+        <xpath expr="//notebook" position="inside">
+
+        <page string="Compensation"
+            name="compensation"
+            groups="vt_employee.group_vt_hr_manager,base.group_system">
+
+            <group string="Salary Information">
+
+                <field name="currency_id"/>
+
+                <field name="salary"
+                    widget="monetary"/>
+
+            </group>
+
+        </page>
+
+        </xpath>
         </field>
     </record>
 </odoo>

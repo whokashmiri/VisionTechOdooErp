@@ -20,6 +20,9 @@ docker compose run --rm --no-deps odoo odoo -d configllc -u vt_employee --stop-a
 
 docker compose up -d
 
+##odoo shell
+docker compose exec odoo sh -c 'odoo shell -c /etc/odoo/odoo.conf -d configllc --db_host="$HOST" --db_port="$PORT" --db_user="$USER" --db_password="$PASSWORD" --no-http'
+
 # =========================
 
 ---
