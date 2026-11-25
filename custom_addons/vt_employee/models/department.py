@@ -1,5 +1,6 @@
 
 from odoo import api, fields, models
+from odoo.exceptions import AccessError
 
 
 class Department(models.Model):
@@ -28,17 +29,29 @@ class Department(models.Model):
         comodel_name="vt.employee",
         string="Department Manager",
         ondelete="set null",
+        groups=(
+            "vt_employee.group_vt_hr_user,"
+            "base.group_system"
+        ),
     )
 
     employee_ids = fields.One2many(
         comodel_name="vt.employee",
         inverse_name="department_id",
         string="Employees",
+        groups=(
+            "vt_employee.group_vt_hr_user,"
+            "base.group_system"
+        ),
     )
 
     employee_count = fields.Integer(
         string="Employee Count",
         compute="_compute_employee_count",
+        groups=(
+            "vt_employee.group_vt_hr_user,"
+            "base.group_system"
+        ),
     )
 
     active = fields.Boolean(
@@ -62,6 +75,18 @@ class Department(models.Model):
 
     def action_view_employees(self):
         self.ensure_one()
+        self.check_access("read")
+        if not (
+            self.env.user.has_group(
+                "vt_employee.group_vt_hr_user"
+            )
+            or self.env.user.has_group(
+                "base.group_system"
+            )
+        ):
+            raise AccessError(
+                "You are not allowed to view department employees"
+            )
 
         return {
             "type": "ir.actions.act_window",

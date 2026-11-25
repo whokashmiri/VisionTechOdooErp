@@ -30,3 +30,6 @@ Object buttton - Executes Py Method , implement business logic, construct dynami
 Action button - Executes Existing action, usually opens predefined functionality , references a particular action, good for navigation
 
 sequence - shows UI (menuitem) in order
+
+Access Control List (CRUD operations) - create = create() ; read = search(), read(); update = write() ; delete = unlink()
+odoo use the ir.model.access model to store these permissions

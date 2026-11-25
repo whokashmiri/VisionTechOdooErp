@@ -19,6 +19,7 @@
     "data": [
         "security/employee_groups.xml",
         "security/ir.model.access.csv",
+        "security/employee_rules.xml",
         "views/employee_views.xml",
         "views/department_views.xml",
         "views/employee_view_inherit.xml",

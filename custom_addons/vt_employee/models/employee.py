@@ -59,12 +59,20 @@ class Employee(models.Model):
         string="Reporting Manager",
         ondelete="set null",
         index=True,
+        groups=(
+            "vt_employee.group_vt_hr_user,"
+            "base.group_system"
+        )
     )
 
     subordinate_ids = fields.One2many(
         comodel_name="vt.employee",
         inverse_name="manager_id",
         string="Subordinates",
+        groups=(
+            "vt_employee.group_vt_hr_user,"
+            "base.group_system"
+        )
     )
 
     active = fields.Boolean(

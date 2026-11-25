@@ -83,7 +83,9 @@
                     <notebook>
 
                         <page string="Employees"
-                              name="employees">
+                              name="employees"
+                              groups="vt_employee.group_vt_hr_user,base.group_system">
+                              
 
                             <field name="employee_ids"
                                    readonly="True">
