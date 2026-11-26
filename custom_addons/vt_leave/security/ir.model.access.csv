@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_leave_employee,leave.employee,model_vt_leave_request,vt_employee.group_vt_employee,1,1,1,1
+access_leave_hr_manager,leave.hr.manager,model_vt_leave_request,vt_employee.group_vt_hr_manager,1,1,1,1
+access_leave_admin,leave.admin,model_vt_leave_request,base.group_system,1,1,1,1

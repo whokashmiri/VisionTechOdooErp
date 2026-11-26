@@ -1,0 +1,112 @@
+
+<odoo>
+
+    <record id="view_leave_list" model="ir.ui.view">
+        <field name="name">vt.leave.request.list</field>
+        <field name="model">vt.leave.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="employee_id"/>
+                <field name="leave_type"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="duration"/>
+                <field name="state"
+                       widget="badge"
+                       decoration-success="state == 'approved'"
+                       decoration-warning="state == 'submitted'"
+                       decoration-danger="state == 'rejected'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_leave_form" model="ir.ui.view">
+        <field name="name">vt.leave.request.form</field>
+        <field name="model">vt.leave.request</field>
+        <field name="arch" type="xml">
+            <form string="Leave Request">
+
+                <header>
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,submitted,approved,rejected"
+                           readonly="True"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group string="Request Information">
+                            <field name="name"
+                                   readonly="state != 'draft'"/>
+                            <field name="employee_id"
+                                   readonly="True"/>
+                            <field name="leave_type"
+                                   readonly="state != 'draft'"/>
+                        </group>
+
+                        <group string="Leave Period">
+                            <field name="start_date"
+                                   readonly="state != 'draft'"/>
+                            <field name="end_date"
+                                   readonly="state != 'draft'"/>
+                            <field name="duration"
+                                   readonly="True"/>
+                        </group>
+                    </group>
+
+                    <group string="Reason">
+                        <field name="reason"
+                               nolabel="1"
+                               readonly="state != 'draft'"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_leave_search" model="ir.ui.view">
+        <field name="name">vt.leave.request.search</field>
+        <field name="model">vt.leave.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="employee_id"/>
+
+                <filter name="submitted"
+                        string="Pending Approval"
+                        domain="[('state', '=', 'submitted')]"/>
+
+                <filter name="approved"
+                        string="Approved"
+                        domain="[('state', '=', 'approved')]"/>
+
+                <filter name="rejected"
+                        string="Rejected"
+                        domain="[('state', '=', 'rejected')]"/>
+
+                <separator/>
+
+                <filter name="group_state"
+                        string="Status"
+                        context="{'group_by': 'state'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_leave_requests"
+            model="ir.actions.act_window">
+        <field name="name">Leave Requests</field>
+        <field name="res_model">vt.leave.request</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_leave_search"/>
+    </record>
+
+    <menuitem id="menu_leave_requests"
+              name="Leave Requests"
+              parent="vt_employee.menu_vt_employee_root"
+              action="action_leave_requests"
+              sequence="30"/>
+
+</odoo>
