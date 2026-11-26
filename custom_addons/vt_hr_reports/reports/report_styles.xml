@@ -1,0 +1,72 @@
+
+
+<odoo>
+
+    <template id="hr_report_styles">
+
+        <style>
+
+            .vt-hr-report {
+                font-size: 12px;
+                color: #252525;
+                line-height: 1.5;
+            }
+
+            .vt-hr-report h2 {
+                color: #875a7b;
+                font-size: 24px;
+                font-weight: bold;
+                border-bottom: 2px solid #875a7b;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            .vt-hr-report h4 {
+                color: #875a7b;
+                font-size: 16px;
+                margin-top: 18px;
+                margin-bottom: 12px;
+                page-break-after: avoid;
+            }
+
+            .vt-hr-report table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .vt-hr-report th,
+            .vt-hr-report td {
+                padding: 8px;
+                border: 1px solid #dddddd;
+                vertical-align: top;
+                word-wrap: break-word;
+            }
+
+            .vt-hr-report tbody th {
+                background-color: #f5f2f5;
+                font-weight: bold;
+            }
+
+            .vt-hr-report thead th {
+                background-color: #875a7b;
+                color: #ffffff;
+            }
+
+            .vt-hr-report thead {
+                display: table-header-group;
+            }
+
+            .vt-hr-report tr {
+                page-break-inside: avoid;
+            }
+
+            .vt-hr-report .text-muted {
+                font-size: 10px;
+                color: #666666;
+            }
+
+        </style>
+
+    </template>
+
+</odoo>

@@ -1,0 +1,34 @@
+
+<odoo>
+
+    <record id="view_employee_form_report_button"
+            model="ir.ui.view">
+
+        <field name="name">
+            vt.employee.form.report.button
+        </field>
+
+        <field name="model">vt.employee</field>
+
+        <field name="inherit_id"
+               ref="vt_employee.view_vt_employee_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//header"
+                   position="inside">
+
+                <button name="%(vt_hr_reports.action_report_employee_profile)d"
+                        type="action"
+                        string="Print Profile"
+                        icon="fa-print"
+                        invisible="not id"
+                        groups="vt_employee.group_vt_employee,base.group_system"/>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

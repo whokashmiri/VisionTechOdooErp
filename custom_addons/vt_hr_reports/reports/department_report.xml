@@ -1,0 +1,134 @@
+
+
+<odoo>
+
+    <template id="report_department_employees">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="o">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page vt-hr-report">
+
+                        <t t-call="vt_hr_reports.hr_report_styles"/>
+
+                        <h2>Department Employee Listing</h2>
+
+                        <t t-set="employees"
+                           t-value="department_employees[o.id]"/>
+
+                        <table class="table table-bordered">
+
+                            <tbody>
+
+                                <tr>
+                                    <th style="width: 35%;">
+                                        Department Name
+                                    </th>
+                                    <td>
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Department Code</th>
+                                    <td>
+                                        <span t-field="o.code"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Department Manager</th>
+                                    <td>
+                                        <span t-if="o.manager_id"
+                                              t-field="o.manager_id.name"/>
+
+                                        <span t-else="">
+                                            Not assigned
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Total Listed Employees</th>
+                                    <td>
+                                        <span t-out="len(employees)"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <h4 class="mt-4">
+                            Employee Details
+                        </h4>
+
+                        <table class="table table-sm table-bordered"
+                               t-if="employees">
+
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Employee Code</th>
+                                    <th>Employee Name</th>
+                                    <th>Joining Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                <tr t-foreach="employees"
+                                    t-as="employee"
+                                    style="page-break-inside: avoid;">
+
+                                    <td>
+                                        <span t-out="employee_index + 1"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="employee.employee_code"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="employee.name"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="employee.joining_date"/>
+                                    </td>
+
+                                    <td>
+                                        <span t-field="employee.status"/>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <p t-else="">
+                            No employees are assigned to
+                            this department.
+                        </p>
+
+                        <p class="text-muted mt-3">
+                            Includes unarchived employee records
+                            visible to the printing user.
+                        </p>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

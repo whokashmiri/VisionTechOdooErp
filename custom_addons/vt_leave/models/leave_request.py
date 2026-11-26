@@ -160,6 +160,8 @@ class LeaveRequest(models.Model):
 
         super(LeaveRequest, self).write({
             "state": "submitted",
+            "submitted_by": self.env.uid,
+            "submitted_at": fields.Datetime.now(),
         })
 
     def action_approve(self):

@@ -1,0 +1,109 @@
+
+
+<odoo>
+
+    <template id="report_employee_profile">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="o">
+
+                <t t-call="web.external_layout">
+
+                    <div class="page vt-hr-report">
+
+                    <t t-call="vt_hr_reports.hr_report_styles"/>
+
+                        <h2>Employee Profile</h2>
+
+                        <p>
+                            Employee Reference:
+                            <strong t-field="o.employee_code"/>
+                        </p>
+
+                        <table class="table table-bordered">
+
+                            <tbody>
+
+                                <tr>
+                                    <th style="width: 35%;">
+                                        Employee Name
+                                    </th>
+                                    <td>
+                                        <span t-field="o.name"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Department</th>
+                                    <td>
+                                        <span t-field="o.department_id.name"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Joining Date</th>
+                                    <td>
+                                        <span t-field="o.joining_date"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Employment Status</th>
+                                    <td>
+                                        <span t-field="o.status"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Email</th>
+                                    <td>
+                                        <span t-if="o.email"
+                                              t-field="o.email"/>
+                                        <span t-else="">
+                                            Not provided
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Phone Number</th>
+                                    <td>
+                                        <span t-if="o.phone"
+                                              t-field="o.phone"/>
+                                        <span t-else="">
+                                            Not provided
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <tr groups="vt_employee.group_vt_hr_user,base.group_system">
+                                    <th>Reporting Manager</th>
+                                    <td>
+                                        <span t-if="o.manager_id"
+                                              t-field="o.manager_id.name"/>
+                                        <span t-else="">
+                                            Not assigned
+                                        </span>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                        <p class="text-muted">
+                            Confidential - Internal HR Use
+                        </p>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>
