@@ -1,0 +1,101 @@
+
+
+<odoo>
+
+    <record id="view_attendance_list" model="ir.ui.view">
+        <field name="name">vt.attendance.list</field>
+        <field name="model">vt.attendance</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="worked_hours"
+                       widget="float_time"
+                       sum="Total Hours"/>
+                <field name="state"
+                       widget="badge"
+                       decoration-success="state == 'open'"
+                       decoration-info="state == 'closed'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_attendance_form" model="ir.ui.view">
+        <field name="name">vt.attendance.form</field>
+        <field name="model">vt.attendance</field>
+        <field name="arch" type="xml">
+            <form string="Attendance">
+
+                <header>
+                    <button name="action_check_out"
+                            type="object"
+                            string="Check Out"
+                            class="oe_highlight"
+                            invisible="state != 'open' or not id"/>
+
+                    <field name="state"
+                           widget="statusbar"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="check_in"/>
+                            <field name="check_out"/>
+                        </group>
+
+                        <group>
+                            <field name="worked_hours"
+                                   widget="float_time"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="view_attendance_search" model="ir.ui.view">
+        <field name="name">vt.attendance.search</field>
+        <field name="model">vt.attendance</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+
+                <filter name="open"
+                        string="Checked In"
+                        domain="[('state', '=', 'open')]"/>
+
+                <filter name="closed"
+                        string="Checked Out"
+                        domain="[('state', '=', 'closed')]"/>
+
+                <separator/>
+
+                <filter name="group_employee"
+                        string="Employee"
+                        context="{'group_by': 'employee_id'}"/>
+
+                <filter name="group_day"
+                        string="Check-in Date"
+                        context="{'group_by': 'check_in:day'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_attendance" model="ir.actions.act_window">
+        <field name="name">Attendance</field>
+        <field name="res_model">vt.attendance</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_attendance_search"/>
+    </record>
+
+    <menuitem id="menu_attendance"
+              name="Attendance"
+              parent="vt_employee.menu_vt_employee_root"
+              action="action_attendance"
+              sequence="40"/>
+
+</odoo>

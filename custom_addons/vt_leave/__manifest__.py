@@ -15,6 +15,9 @@
         "security/ir.model.access.csv",
         "security/leave_rules.xml",
         "views/leave_views.xml",
+        "data/leave_mail_template.xml",
+        "data/leave_cron.xml",
+        "data/leave_server_actions.xml",
     ],
 
     "installable": True,

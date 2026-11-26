@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_onboarding_manager,onboarding.manager,model_vt_onboarding_request,vt_employee.group_vt_hr_manager,1,1,1,1
+access_onboarding_admin,onboarding.admin,model_vt_onboarding_request,base.group_system,1,1,1,1
+access_onboarding_wizard_manager,onboarding.wizard.manager,model_vt_onboarding_wizard,vt_employee.group_vt_hr_manager,1,1,1,1
+access_onboarding_wizard_admin,onboarding.wizard.admin,model_vt_onboarding_wizard,base.group_system,1,1,1,1

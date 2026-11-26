@@ -1,0 +1,66 @@
+
+<odoo>
+
+    <record id="view_onboarding_wizard_form"
+            model="ir.ui.view">
+
+        <field name="name">vt.onboarding.wizard.form</field>
+
+        <field name="model">vt.onboarding.wizard</field>
+
+        <field name="arch" type="xml">
+
+            <form string="New Employee Onboarding">
+
+                <group>
+
+                    <field name="name"/>
+
+                    <field name="department_id"
+                           options="{'no_create': True}"/>
+
+                    <field name="joining_date"/>
+
+                    <field name="equipment_required"/>
+
+                    <field name="equipment_notes"
+                           invisible="not equipment_required"
+                           required="equipment_required"/>
+
+                </group>
+
+                <footer>
+
+                    <button name="action_create_request"
+                            type="object"
+                            string="Create Request"
+                            class="btn-primary"/>
+
+                    <button string="Cancel"
+                            special="cancel"
+                            class="btn-secondary"/>
+
+                </footer>
+
+            </form>
+
+        </field>
+    </record>
+
+    <record id="action_onboarding_wizard"
+            model="ir.actions.act_window">
+
+        <field name="name">New Onboarding Request</field>
+        <field name="res_model">vt.onboarding.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+
+    </record>
+
+    <menuitem id="menu_onboarding_create"
+              name="New Onboarding Request"
+              parent="menu_onboarding_root"
+              action="action_onboarding_wizard"
+              sequence="20"/>
+
+</odoo>

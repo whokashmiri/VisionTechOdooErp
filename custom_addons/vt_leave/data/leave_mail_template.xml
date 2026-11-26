@@ -1,0 +1,46 @@
+
+<odoo>
+
+    <record id="mail_template_leave_decision"
+            model="mail.template">
+
+        <field name="name">Leave Decision Notification</field>
+
+        <field name="model_id"
+               ref="model_vt_leave_request"/>
+
+        <field name="subject">
+            Your leave request has been reviewed
+        </field>
+
+        <field name="email_to">
+            {{ object.requester_id.partner_id.email or '' }}
+        </field>
+
+        <field name="body_html" type="html">
+            <div>
+                <p>Hello,</p>
+
+                <p>
+                    Your leave request has been reviewed.
+                </p>
+
+                <p>
+                    Status:
+                    <strong>
+                        <t t-out="object.state"/>
+                    </strong>
+                </p>
+
+                <p>
+                    Please log in to VisionTech ERP
+                    to view the request details.
+                </p>
+            </div>
+        </field>
+
+        <field name="auto_delete" eval="False"/>
+
+    </record>
+
+</odoo>

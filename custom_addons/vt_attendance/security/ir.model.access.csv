@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_attendance_employee,attendance.employee,model_vt_attendance,vt_employee.group_vt_employee,1,1,1,0
+access_attendance_manager,attendance.manager,model_vt_attendance,vt_employee.group_vt_hr_manager,1,1,1,1
+access_attendance_admin,attendance.admin,model_vt_attendance,base.group_system,1,1,1,1

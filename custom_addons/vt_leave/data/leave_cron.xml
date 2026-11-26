@@ -1,0 +1,31 @@
+
+<odoo noupdate="1">
+
+    <record id="cron_leave_notifications"
+            model="ir.cron">
+
+        <field name="name">
+            VisionTech: Leave Decision Notifications
+        </field>
+
+        <field name="model_id"
+               ref="model_vt_leave_request"/>
+
+        <field name="state">code</field>
+
+        <field name="code">
+            model._cron_queue_decision_notifications()
+        </field>
+
+        <field name="user_id"
+               ref="base.user_admin"/>
+
+        <field name="interval_number">5</field>
+
+        <field name="interval_type">minutes</field>
+
+        <field name="active" eval="False"/>
+
+    </record>
+
+</odoo>

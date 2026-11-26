@@ -28,6 +28,25 @@
             <form string="Leave Request">
 
                 <header>
+                    <button name="action_submit"
+                            type="object"
+                            string="Submit"
+                            class="oe_highlight"
+                            invisible="state != 'draft'"/>
+
+                    <button name="action_approve"
+                            type="object"
+                            string="Approve"
+                            class="oe_highlight"
+                            groups="vt_employee.group_vt_hr_manager,base.group_system"
+                            invisible="state != 'submitted'"/>
+
+                    <button name="action_reject"
+                            type="object"
+                            string="Reject"
+                            groups="vt_employee.group_vt_hr_manager,base.group_system"
+                            invisible="state != 'submitted'"/>
+
                     <field name="state"
                            widget="statusbar"
                            statusbar_visible="draft,submitted,approved,rejected"
@@ -61,6 +80,25 @@
                                readonly="state != 'draft'"/>
                     </group>
                 </sheet>
+                <notebook>
+
+                    <page string="Approval History" name="approval_history">
+
+                        <group>
+                            <group string="Submission">
+                                <field name="submitted_by"/>
+                                <field name="submitted_at"/>
+                        </group>
+
+                        <group string="Decision">
+                                <field name="decision_by"/>
+                                <field name="decision_at"/>
+                        </group>
+                        </group>
+
+                    </page>
+
+                </notebook>
 
             </form>
         </field>

@@ -1,0 +1,57 @@
+
+<odoo>
+
+    <record id="view_onboarding_list" model="ir.ui.view">
+        <field name="name">vt.onboarding.request.list</field>
+        <field name="model">vt.onboarding.request</field>
+        <field name="arch" type="xml">
+            <list create="False">
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="joining_date"/>
+                <field name="equipment_required"/>
+                <field name="requested_by"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_onboarding_form" model="ir.ui.view">
+        <field name="name">vt.onboarding.request.form</field>
+        <field name="model">vt.onboarding.request</field>
+        <field name="arch" type="xml">
+            <form create="False">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="joining_date"/>
+                        <field name="requested_by"/>
+                        <field name="equipment_required"/>
+                        <field name="equipment_notes"
+                               invisible="not equipment_required"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_onboarding_requests"
+            model="ir.actions.act_window">
+        <field name="name">Onboarding Requests</field>
+        <field name="res_model">vt.onboarding.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_onboarding_root"
+              name="Onboarding"
+              parent="vt_employee.menu_vt_employee_root"
+              groups="vt_employee.group_vt_hr_manager,base.group_system"
+              sequence="50"/>
+
+    <menuitem id="menu_onboarding_requests"
+              name="Onboarding Requests"
+              parent="menu_onboarding_root"
+              action="action_onboarding_requests"
+              sequence="10"/>
+
+</odoo>

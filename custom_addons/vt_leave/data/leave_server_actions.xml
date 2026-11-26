@@ -1,0 +1,32 @@
+
+<odoo>
+
+    <record id="action_server_pending_leave"
+            model="ir.actions.server">
+
+        <field name="name">Open Pending Leave Requests</field>
+
+        <field name="model_id"
+               ref="model_vt_leave_request"/>
+
+        <field name="binding_model_id"
+               ref="model_vt_leave_request"/>
+
+        <field name="binding_view_types">list</field>
+
+        <field name="state">code</field>
+
+        <field name="code">
+action = {
+    'type': 'ir.actions.act_window',
+    'name': 'Pending Leave Requests',
+    'res_model': 'vt.leave.request',
+    'views': [(False, 'list'), (False, 'form')],
+    'domain': [('state', '=', 'submitted')],
+    'target': 'current',
+}
+        </field>
+
+    </record>
+
+</odoo>
