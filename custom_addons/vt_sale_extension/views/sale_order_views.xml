@@ -1,0 +1,48 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_sale_order_form_vt_extension"
+            model="ir.ui.view">
+
+        <field name="name">
+            sale.order.form.vt.extension
+        </field>
+
+        <field name="model">sale.order</field>
+
+        <field name="inherit_id"
+               ref="sale.view_order_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/notebook"
+                   position="inside">
+
+                <page string="VisionTech Information"
+                      name="vt_sale_information">
+
+                    <group string="Project Information">
+
+                        <field name="opportunity_id"
+                               options="{'no_create': True}"
+                               readonly="state not in ['draft', 'sent']"
+                               groups="sales_team.group_sale_salesman"/>
+
+                        <field name="vt_project_reference"
+                               readonly="state not in ['draft', 'sent']"/>
+
+                        <field name="vt_service_type"
+                               readonly="state not in ['draft', 'sent']"/>
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

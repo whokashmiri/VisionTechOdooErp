@@ -1,0 +1,35 @@
+<odoo>
+
+    <record id="view_partner_form_vt_extension"
+            model="ir.ui.view">
+
+        <field name="name">res.partner.form.vt.extension</field>
+
+        <field name="model">res.partner</field>
+
+        <field name="inherit_id"
+               ref="base.view_partner_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/notebook"
+                   position="inside">
+
+                <page string="VisionTech"
+                      name="vt_business_information">
+
+                    <group string="Business Classification">
+
+                        <field name="vt_customer_segment"/>
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

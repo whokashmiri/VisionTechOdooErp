@@ -1,0 +1,68 @@
+
+<odoo>
+
+    <record id="view_project_form_vt_extension"
+            model="ir.ui.view">
+
+        <field name="name">
+            project.project.form.vt.extension
+        </field>
+
+        <field name="model">project.project</field>
+
+        <field name="inherit_id"
+               ref="project.edit_project"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/notebook"
+                   position="inside">
+
+                <page string="VisionTech Reporting"
+                      name="vt_project_reporting"
+                      groups="project.group_project_manager">
+
+                    <group>
+
+                        <group string="Project Time">
+
+                            <field name="allow_timesheets"
+                                   readonly="True"/>
+
+                            <field name="allocated_hours"
+                                   widget="float_time"/>
+
+                            <field name="effective_hours"
+                                   widget="float_time"
+                                   readonly="True"/>
+
+                            <field name="remaining_hours"
+                                   widget="float_time"
+                                   readonly="True"/>
+
+                        </group>
+
+                        <group string="Budget Utilization">
+
+                            <field name="vt_budget_used_pct"
+                                   readonly="True"/>
+
+                            <field name="vt_budget_status"
+                                   widget="badge"
+                                   decoration-success="vt_budget_status == 'normal'"
+                                   decoration-warning="vt_budget_status == 'warning'"
+                                   decoration-danger="vt_budget_status == 'exceeded'"/>
+
+                        </group>
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

@@ -1,0 +1,52 @@
+
+<odoo>
+
+    <record id="view_crm_lead_form_vt_extension"
+            model="ir.ui.view">
+
+        <field name="name">crm.lead.form.vt.extension</field>
+
+        <field name="model">crm.lead</field>
+
+        <field name="inherit_id"
+               ref="crm.crm_lead_view_form"/>
+
+        <field name="arch" type="xml">
+
+            <xpath expr="//sheet/notebook"
+                   position="inside">
+
+                <page string="VisionTech Requirements"
+                      name="vt_requirements">
+
+                    <group>
+
+                        <group string="Service Information">
+
+                            <field name="vt_service_type"/>
+
+                            <field name="vt_customer_segment"/>
+
+                            <field name="vt_qualified"/>
+
+                        </group>
+
+                    </group>
+
+                    <group string="Business Requirements">
+
+                        <field name="vt_requirements"
+                               nolabel="1"
+                               placeholder="Describe the customer's requirements..."/>
+
+                    </group>
+
+                </page>
+
+            </xpath>
+
+        </field>
+
+    </record>
+
+</odoo>

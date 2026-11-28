@@ -25,6 +25,12 @@
                         invisible="not id"
                         groups="vt_employee.group_vt_employee,base.group_system"/>
 
+                    <button name="action_vt_view_timesheets"
+                        type="object"
+                        string="View Project Timesheets"
+                        class="btn-secondary"
+                        invisible="not id or not allow_timesheets"/>
+
             </xpath>
 
         </field>
